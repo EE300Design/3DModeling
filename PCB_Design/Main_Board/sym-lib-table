@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name A000066)(type Legacy)(uri C:/Users/natha/Documents/GitHub/3DModeling/PCB_Design/Libraries&Footprints/Arduino_Uno/A000066.lib)(options "")(descr ""))
+  (lib (name PJ-037A)(type Legacy)(uri C:/Users/natha/Documents/GitHub/3DModeling/PCB_Design/Libraries&Footprints/PJ-037A_Connector/PJ-037A.lib)(options "")(descr ""))
 )
