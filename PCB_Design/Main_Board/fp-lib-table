@@ -1,3 +1,5 @@
 (fp_lib_table
   (lib (name A4988_Stepper_Driver)(type KiCad)(uri C:/Users/natha/Documents/GitHub/3DModeling/PCB_Design/Libraries&Footprints/A4988_Stepper_Driver)(options "")(descr ""))
+  (lib (name PJ-037A_Connector)(type KiCad)(uri C:/Users/natha/Documents/GitHub/3DModeling/PCB_Design/Libraries&Footprints/PJ-037A_Connector)(options "")(descr ""))
+  (lib (name TE_Terminal_Block)(type KiCad)(uri C:/Users/natha/Documents/GitHub/3DModeling/PCB_Design/Libraries&Footprints/TE_Terminal_Block)(options "")(descr ""))
 )
