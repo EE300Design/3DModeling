@@ -247,4 +247,12 @@ Text GLabel 6600 3850 0    50   Input ~ 0
 D5
 Wire Wire Line
 	6600 3850 6750 3850
+Text GLabel 5025 3150 0    50   Input ~ 0
+Uno_5V
+Wire Wire Line
+	5025 3150 5425 3150
+Text GLabel 6750 3150 0    50   Input ~ 0
+Uno_5V
+Wire Wire Line
+	6750 3150 7150 3150
 $EndSCHEMATC
