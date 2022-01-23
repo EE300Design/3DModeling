@@ -14,10 +14,10 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L MCU_Module:Arduino_UNO_R3 A?
+L MCU_Module:Arduino_UNO_R3 A1
 U 1 1 61ECBE52
 P 3325 2875
-F 0 "A?" H 3325 4056 50  0000 C CNN
+F 0 "A1" H 3325 4056 50  0000 C CNN
 F 1 "Arduino_UNO_R3" H 3325 3965 50  0000 C CNN
 F 2 "Module:Arduino_UNO_R3" H 3325 2875 50  0001 C CIN
 F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H 3325 2875 50  0001 C CNN
@@ -25,10 +25,10 @@ F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H 3325 2875 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Driver_Motor:Pololu_Breakout_A4988 A?
+L Driver_Motor:Pololu_Breakout_A4988 A3
 U 1 1 61ECC8B3
 P 7150 3850
-F 0 "A?" H 7200 4731 50  0000 C CNN
+F 0 "A3" H 7200 4731 50  0000 C CNN
 F 1 "Pololu_Breakout_A4988" H 7200 4640 50  0000 C CNN
 F 2 "Module:Pololu_Breakout-16_15.2x20.3mm" H 7425 3100 50  0001 L CNN
 F 3 "https://www.pololu.com/product/2980/pictures" H 7250 3550 50  0001 C CNN
@@ -36,10 +36,10 @@ F 3 "https://www.pololu.com/product/2980/pictures" H 7250 3550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Driver_Motor:Pololu_Breakout_A4988 A?
+L Driver_Motor:Pololu_Breakout_A4988 A2
 U 1 1 61ECDC3A
 P 5425 3850
-F 0 "A?" H 5475 4731 50  0000 C CNN
+F 0 "A2" H 5475 4731 50  0000 C CNN
 F 1 "Pololu_Breakout_A4988" H 5475 4640 50  0000 C CNN
 F 2 "Module:Pololu_Breakout-16_15.2x20.3mm" H 5700 3100 50  0001 L CNN
 F 3 "https://www.pololu.com/product/2980/pictures" H 5525 3550 50  0001 C CNN
@@ -47,21 +47,21 @@ F 3 "https://www.pololu.com/product/2980/pictures" H 5525 3550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C?
+L Device:C_Small C2
 U 1 1 61ECFD0F
 P 3900 4125
-F 0 "C?" H 3992 4171 50  0000 L CNN
+F 0 "C2" H 3992 4171 50  0000 L CNN
 F 1 "100uF" H 3992 4080 50  0000 L CNN
-F 2 "" H 3900 4125 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 3900 4125 50  0001 C CNN
 F 3 "~" H 3900 4125 50  0001 C CNN
 	1    3900 4125
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Screw_Terminal_01x04 J?
+L Connector:Screw_Terminal_01x04 J3
 U 1 1 61ED0297
 P 8000 4400
-F 0 "J?" H 8080 4392 50  0000 L CNN
+F 0 "J3" H 8080 4392 50  0000 L CNN
 F 1 "Screw_Terminal_01x04" H 8080 4301 50  0000 L CNN
 F 2 "" H 8000 4400 50  0001 C CNN
 F 3 "~" H 8000 4400 50  0001 C CNN
@@ -69,10 +69,10 @@ F 3 "~" H 8000 4400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Connector:Screw_Terminal_01x04 J?
+L Connector:Screw_Terminal_01x04 J2
 U 1 1 61ED19AE
 P 6275 4400
-F 0 "J?" H 6355 4392 50  0000 L CNN
+F 0 "J2" H 6355 4392 50  0000 L CNN
 F 1 "Screw_Terminal_01x04" H 6355 4301 50  0000 L CNN
 F 2 "" H 6275 4400 50  0001 C CNN
 F 3 "~" H 6275 4400 50  0001 C CNN
@@ -80,10 +80,10 @@ F 3 "~" H 6275 4400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L PJ-037A:PJ-037A J?
+L PJ-037A:PJ-037A J1
 U 1 1 61ED222D
 P 4500 2550
-F 0 "J?" H 4495 2890 50  0000 C CNN
+F 0 "J1" H 4495 2890 50  0000 C CNN
 F 1 "PJ-037A" H 4495 2799 50  0000 C CNN
 F 2 "CUI_PJ-037A" H 4500 2550 50  0001 L BNN
 F 3 "" H 4500 2550 50  0001 L BNN
@@ -164,12 +164,12 @@ Wire Wire Line
 Wire Wire Line
 	7350 4650 7350 4950
 $Comp
-L Device:C_Small C?
+L Device:C_Small C1
 U 1 1 61ECECEC
 P 4850 2300
-F 0 "C?" H 4942 2346 50  0000 L CNN
+F 0 "C1" H 4942 2346 50  0000 L CNN
 F 1 "100uF" H 4942 2255 50  0000 L CNN
-F 2 "" H 4850 2300 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4850 2300 50  0001 C CNN
 F 3 "~" H 4850 2300 50  0001 C CNN
 	1    4850 2300
 	0    -1   -1   0   
