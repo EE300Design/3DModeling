@@ -47,17 +47,6 @@ F 3 "https://www.pololu.com/product/2980/pictures" H 5525 3550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C2
-U 1 1 61ECFD0F
-P 3900 4125
-F 0 "C2" H 3992 4171 50  0000 L CNN
-F 1 "100uF" H 3992 4080 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 3900 4125 50  0001 C CNN
-F 3 "~" H 3900 4125 50  0001 C CNN
-	1    3900 4125
-	1    0    0    -1  
-$EndComp
-$Comp
 L PJ-037A:PJ-037A J1
 U 1 1 61ED222D
 P 4500 2550
@@ -70,18 +59,11 @@ F 5 "CUI INC" H 4500 2550 50  0001 L BNN "MANUFACTURER"
 	1    4500 2550
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5625 2450 5625 3150
-Wire Wire Line
-	5625 2450 7350 2450
-Wire Wire Line
-	7350 2450 7350 3150
-Connection ~ 5625 2450
 Text GLabel 5275 4950 0    50   Input ~ 0
 GND_Barrel
 Text GLabel 7000 4950 0    50   Input ~ 0
 GND_Barrel
-Text GLabel 5100 2650 2    50   Input ~ 0
+Text GLabel 4850 2650 2    50   Input ~ 0
 GND_Barrel
 Text GLabel 3275 4375 0    50   Input ~ 0
 GND_Uno
@@ -112,43 +94,20 @@ Wire Wire Line
 $Comp
 L Device:C_Small C1
 U 1 1 61ECECEC
-P 4850 2300
-F 0 "C1" H 4942 2346 50  0000 L CNN
-F 1 "100uF" H 4942 2255 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 4850 2300 50  0001 C CNN
-F 3 "~" H 4850 2300 50  0001 C CNN
-	1    4850 2300
-	0    -1   -1   0   
+P 6150 2550
+F 0 "C1" H 6242 2596 50  0000 L CNN
+F 1 "100uF" H 6242 2505 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 6150 2550 50  0001 C CNN
+F 3 "~" H 6150 2550 50  0001 C CNN
+	1    6150 2550
+	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4700 2450 4750 2450
-Wire Wire Line
-	4750 2300 4750 2450
-Connection ~ 4750 2450
-Wire Wire Line
-	4750 2450 5625 2450
-Wire Wire Line
-	4950 2300 4950 2650
-Wire Wire Line
-	4700 2650 4950 2650
-Connection ~ 4950 2650
-Wire Wire Line
-	4950 2650 5100 2650
 Text GLabel 3450 1550 0    50   Input ~ 0
 Uno_5V
 Wire Wire Line
 	3525 1875 3525 1550
 Wire Wire Line
 	3525 1550 3450 1550
-Connection ~ 3425 4375
-Text GLabel 3800 4025 0    50   Input ~ 0
-Uno_5V
-Wire Wire Line
-	3800 4025 3900 4025
-Wire Wire Line
-	3900 4225 3900 4375
-Wire Wire Line
-	3425 4375 3900 4375
 Wire Wire Line
 	5025 3450 4975 3450
 Wire Wire Line
@@ -204,41 +163,136 @@ Wire Wire Line
 $Comp
 L 796949-4:796949-4 J2
 U 1 1 61EE0DC2
-P 6225 3850
-F 0 "J2" V 6329 3622 50  0000 R CNN
-F 1 "796949-4" V 6238 3622 50  0000 R CNN
-F 2 "TE_Terminal_Block:TE_796949-4" H 6225 3850 50  0001 L BNN
-F 3 "" H 6225 3850 50  0001 L BNN
-F 4 "796949-4" H 6225 3850 50  0001 L BNN "Comment"
-	1    6225 3850
-	-1   0    0    1   
+P 6200 4450
+F 0 "J2" V 6304 4222 50  0000 R CNN
+F 1 "796949-4" V 6213 4222 50  0000 R CNN
+F 2 "TE_Terminal_Block:TE_796949-4" H 6200 4450 50  0001 L BNN
+F 3 "" H 6200 4450 50  0001 L BNN
+F 4 "796949-4" H 6200 4450 50  0001 L BNN "Comment"
+	1    6200 4450
+	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	6025 3750 5925 3750
-Wire Wire Line
-	6025 3850 5925 3850
-Wire Wire Line
-	6025 3950 5925 3950
-Wire Wire Line
-	6025 4050 5925 4050
 $Comp
 L 796949-4:796949-4 J3
 U 1 1 61EF4A90
-P 7975 3850
-F 0 "J3" H 7847 3854 50  0000 R CNN
-F 1 "796949-4" H 7847 3945 50  0000 R CNN
-F 2 "TE_Terminal_Block:TE_796949-4" H 7975 3850 50  0001 L BNN
-F 3 "" H 7975 3850 50  0001 L BNN
-F 4 "796949-4" H 7975 3850 50  0001 L BNN "Comment"
-	1    7975 3850
-	-1   0    0    1   
+P 7925 4450
+F 0 "J3" H 7797 4454 50  0000 R CNN
+F 1 "796949-4" H 7797 4545 50  0000 R CNN
+F 2 "TE_Terminal_Block:TE_796949-4" H 7925 4450 50  0001 L BNN
+F 3 "" H 7925 4450 50  0001 L BNN
+F 4 "796949-4" H 7925 4450 50  0001 L BNN "Comment"
+	1    7925 4450
+	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	7775 3750 7650 3750
+	5925 3750 6000 3750
 Wire Wire Line
-	7775 3850 7650 3850
+	6000 3750 6000 4250
 Wire Wire Line
-	7775 3950 7650 3950
+	5925 3850 6100 3850
 Wire Wire Line
-	7775 4050 7650 4050
+	6100 3850 6100 4250
+Wire Wire Line
+	5925 3950 6200 3950
+Wire Wire Line
+	6200 3950 6200 4250
+Wire Wire Line
+	5925 4050 6300 4050
+Wire Wire Line
+	6300 4050 6300 4250
+Wire Wire Line
+	7650 3750 7725 3750
+Wire Wire Line
+	7725 3750 7725 4250
+Wire Wire Line
+	7650 3850 7825 3850
+Wire Wire Line
+	7825 3850 7825 4250
+Wire Wire Line
+	7650 3950 7925 3950
+Wire Wire Line
+	7925 3950 7925 4250
+Wire Wire Line
+	7650 4050 8025 4050
+Wire Wire Line
+	8025 4050 8025 4250
+Text GLabel 4850 2450 2    50   Input ~ 0
+12V
+Wire Wire Line
+	4850 2450 4700 2450
+Wire Wire Line
+	4850 2650 4700 2650
+Text GLabel 5625 3000 1    50   Input ~ 0
+12V
+Wire Wire Line
+	5625 3000 5625 3150
+Text GLabel 7350 3000 1    50   Input ~ 0
+12V
+Wire Wire Line
+	7350 3000 7350 3150
+Text GLabel 6075 2375 0    50   Input ~ 0
+12V
+$Comp
+L Device:C_Small C3
+U 1 1 61F2EB46
+P 6600 2550
+F 0 "C3" H 6692 2596 50  0000 L CNN
+F 1 "100uF" H 6692 2505 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 6600 2550 50  0001 C CNN
+F 3 "~" H 6600 2550 50  0001 C CNN
+	1    6600 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6075 2375 6150 2375
+Wire Wire Line
+	6150 2375 6150 2450
+Wire Wire Line
+	6150 2450 6600 2450
+Connection ~ 6150 2450
+Wire Wire Line
+	6150 2650 6600 2650
+Text GLabel 6075 2650 0    50   Input ~ 0
+GND_Barrel
+Wire Wire Line
+	6075 2650 6150 2650
+Connection ~ 6150 2650
+$Comp
+L Device:C_Small C4
+U 1 1 61F3818E
+P 7525 2550
+F 0 "C4" H 7617 2596 50  0000 L CNN
+F 1 "100uF" H 7617 2505 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7525 2550 50  0001 C CNN
+F 3 "~" H 7525 2550 50  0001 C CNN
+	1    7525 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C5
+U 1 1 61F38195
+P 7975 2550
+F 0 "C5" H 8067 2596 50  0000 L CNN
+F 1 "100uF" H 8067 2505 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7975 2550 50  0001 C CNN
+F 3 "~" H 7975 2550 50  0001 C CNN
+	1    7975 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 2375 7525 2375
+Wire Wire Line
+	7525 2375 7525 2450
+Wire Wire Line
+	7525 2450 7975 2450
+Connection ~ 7525 2450
+Wire Wire Line
+	7525 2650 7975 2650
+Wire Wire Line
+	7450 2650 7525 2650
+Connection ~ 7525 2650
+Text GLabel 7450 2375 0    50   Input ~ 0
+Uno_5V
+Text GLabel 7450 2650 0    50   Input ~ 0
+GND_Uno
 $EndSCHEMATC
