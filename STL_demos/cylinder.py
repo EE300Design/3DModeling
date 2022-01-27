@@ -17,16 +17,12 @@ for i in range(row_count):
 
 cylinder = mesh.Mesh(np.zeros(2*column_count*row_count, dtype=mesh.Mesh.dtype))
 
+count = 0
 for i in range(row_count-1):
     for j in range(column_count):
-        cylinder.vectors[column_count*i+j] = [vertices[i,j-1],vertices[i,j],vertices[i+1,j-1]]
-
-half_index = (row_count-1)*column_count
-
-for i in range(row_count-1):
-    for j in range(column_count):
-        cylinder.vectors[half_index+column_count*i+j] = [vertices[i+1,j-1],vertices[i+1,j],vertices[i,j]]
-
+        cylinder.vectors[count] = [vertices[i,j-1],vertices[i,j],vertices[i+1,j-1]]
+        cylinder.vectors[count+1] = [vertices[i+1,j-1],vertices[i+1,j],vertices[i,j]]
+        count+=2
 
 # Write the mesh to file "cube.stl"
 cylinder.save('cylinder_demo.stl')
