@@ -9,6 +9,7 @@ References: \
 [4] https://youtu.be/diuOMDRtIMI \
 [5] https://github.com/TravisLedo/LidarScanRender \
 [6] https://create.arduino.cc/projecthub/TravisLedo/arduino-lidar-scanning-java-rendering-6b2124 \
-[7] https://www.arduino.cc/reference/en/libraries/stepperdriver/
+[7] https://www.arduino.cc/reference/en/libraries/stepperdriver/ \
+[8] https://www.youtube.com/watch?v=fHAO7SW-SZI
 
 
