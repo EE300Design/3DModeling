@@ -12,4 +12,9 @@ References: \
 [7] https://www.arduino.cc/reference/en/libraries/stepperdriver/ \
 [8] https://www.youtube.com/watch?v=fHAO7SW-SZI
 
+Parts: \
+| Component | Quantity | Purpose | Link | Cost |
+| --- | --- | --- | --- | --- |
+| `git status` | List all *new or modified* files |
+| `git diff` | Show file differences that **haven't been** staged |
 
