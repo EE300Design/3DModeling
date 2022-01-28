@@ -13,8 +13,8 @@ References: \
 [8] https://www.youtube.com/watch?v=fHAO7SW-SZI
 
 Parts: 
-| Component | Quantity | Purpose | Link | Cost |
+| Component | Quantity | Purpose | Link | Cost($) |
 | --- | --- | --- | --- | --- |
-| `git status` | List all *new or modified* files |
+| `Nema17 Stepper Motor` | 1 | Drive Rotation Plate | https://www.amazon.com/dp/B07THK76QQ?psc=1&ref=ppx_yo2_dt_b_product_details | 10.99 |
 | `git diff` | Show file differences that **haven't been** staged |
 
