@@ -23,3 +23,4 @@ This is the working space for EE300 design project collaboration
 | `A4988 Stepper Driver` | 5 | Stepper Driver | https://www.amazon.com/dp/B07BND65C8?psc=1&ref=ppx_yo2_dt_b_product_details | 9.69 |
 | `Arduino Uno R3` | 1 | Micro-Controller | https://www.amazon.com/dp/B008GRTSV6?psc=1&ref=ppx_yo2_dt_b_product_details | 22.88 |
 | `Nylon Spacer` | 320 | PCB Stand-off | https://www.amazon.com/dp/B008GRTSV6?psc=1&ref=ppx_yo2_dt_b_product_details | 11.88 |
+| `M3 Threaded Inserts` | 120 | PCB Mounting | https://www.amazon.com/dp/B09KZSJS88?psc=1&ref=ppx_yo2_dt_b_product_details | 12.99 |
