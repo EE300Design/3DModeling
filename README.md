@@ -19,3 +19,4 @@ This is the working space for EE300 design project collaboration
 | `Nema17 Stepper Motor 400mm thread` | 1 | Vertical Motion | https://www.amazon.com/dp/B07YQQGQ4C?psc=1&ref=ppx_yo2_dt_b_product_details | 35.99 |
 | `450mm Linear Motion Rails` | 4 | Vertical Motion Support | https://www.amazon.com/dp/B08HWJVX63?psc=1&ref=ppx_yo2_dt_b_product_details | 35.98 |
 | `12mm Linear Ball Bearing` | 4 | Vertical Motion | https://www.amazon.com/dp/B07H95FFP1?ref=ppx_yo2_dt_b_product_details&th=1 | 11.99 |
+| `TF-Luna Lidar` | 1 | LIDAR | https://www.amazon.com/dp/B08F55QTWP?psc=1&ref=ppx_yo2_dt_b_product_details |25.98 |
