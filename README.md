@@ -25,3 +25,4 @@ This is the working space for EE300 design project collaboration
 | `Nylon Spacer` | 320 | PCB Stand-off | https://www.amazon.com/dp/B008GRTSV6?psc=1&ref=ppx_yo2_dt_b_product_details | 11.88 |
 | `M3 Threaded Inserts` | 120 | PCB Mounting | https://www.amazon.com/dp/B09KZSJS88?psc=1&ref=ppx_yo2_dt_b_product_details | 12.99 |
 | `100uF Cap` | 20 | PCB | https://www.digikey.com/en/products/detail/kemet/ESK107M016AE3AA/13176338 | 3.42 | 
+| `0.1uF Cap` | 20 | PCB | https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/885012207045/5453900 | 1.12 |
