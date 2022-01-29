@@ -16,40 +16,39 @@ void setup() {
   
 }
 
-void iterate_steps(int count, int dir, int motor){
-  if(motor==0){
-    digitalWrite(dirPin1,dir);
-  
-    for(int i = 0;i<count;i++){
-      digitalWrite(stepPin1,HIGH); 
-      delayMicroseconds(500); 
-      digitalWrite(stepPin1,LOW);
-      delayMicroseconds(500); 
-    }
-  }
-  else{
-    digitalWrite(dirPin2,dir);
-  
-    for(int i = 0;i<count;i++){
-      digitalWrite(stepPin2,HIGH); 
-      delayMicroseconds(500); 
-      digitalWrite(stepPin2,LOW);
-      delayMicroseconds(500); 
-    }
-  }
+void iterate_steps1(int count, int dir){
+  digitalWrite(dirPin1,dir);
 
+  for(int i = 0;i<count;i++){
+    digitalWrite(stepPin1,HIGH); 
+    delayMicroseconds(500); 
+    digitalWrite(stepPin1,LOW);
+    delayMicroseconds(500); 
+  }
+}
+void iterate_steps2(int count, int dir){
+  digitalWrite(dirPin2,dir);
+
+  for(int i = 0;i<count;i++){
+    digitalWrite(stepPin2,HIGH); 
+    delayMicroseconds(500); 
+    digitalWrite(stepPin2,LOW);
+    delayMicroseconds(500); 
+  }
 }
 
 void loop() {
   int m = 10;
-  int n = 3;
+  int n = 27;
   int theta_step_size = floor(200/n);
   int theta_correction = 200-(n*theta_step_size);
 
   for(int i=0;i<n;i++){
-    iterate_steps(theta_step_size,LOW,1);
-    delay(1000);
+    iterate_steps1(theta_step_size,LOW);
+    delay(100);
   }
-  iterate_steps(theta_correction,LOW,1);
-  delay(3000);
+  iterate_steps1(theta_correction,LOW);
+  iterate_steps2(200,LOW);
+  delay(1000);
+  
 }
