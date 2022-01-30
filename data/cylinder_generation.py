@@ -33,7 +33,7 @@ def create_cube(m,n,length = 1, rot_ax = [0,0]):
 	for i in range(m):
 		theta = 2*pi/n*i
 
-		if(theta<pi/4 | theta>pi*7/4):
+		if(theta<pi/4 or theta>pi*7/4):
 			x = length
 			y = length*np.tan(theta)
 
@@ -58,13 +58,13 @@ def create_cube(m,n,length = 1, rot_ax = [0,0]):
 
 def polar_to_cart(M,h=1):
 	n,m = M.shape
-	cart = mp.zeros([n,m,3])
+	cart = np.zeros([n,m,3])
 
 	for i in range(n):
 		for j in range(m):
 			x = M[i,j]*np.cos(2*pi/m*j)
 			y = M[i,j]*np.sin(2*pi/m*j)
-			z = i/n*height
+			z = i/(n-1)*h
 			
 			cart[i,j] = [x,y,z]
 
@@ -72,7 +72,10 @@ def polar_to_cart(M,h=1):
 
 
 
-def dot_mat_2mesh(vertices,name='test.stl',save=False):
+def mat2mesh(vertices,name= None):
+	save = (name!=None)
+	column_count = vertices.shape[0]
+	row_count = vertices.shape[1]
 
 	cylinder = mesh.Mesh(np.zeros(2*column_count*row_count, dtype=mesh.Mesh.dtype))
 	count = 0
