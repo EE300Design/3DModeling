@@ -105,7 +105,7 @@ void loop() {
   //Wait to introduce lowering down the LiDAR platform
   delay(5000);
   digitalWrite(dirPin2,HIGH);
-  for(int x = 0; x < 600; x++) {
+  for(int x = 0; x < 7200; x++) {
     digitalWrite(stepPin2,HIGH); 
     delayMicroseconds(500); 
     digitalWrite(stepPin2,LOW); 
