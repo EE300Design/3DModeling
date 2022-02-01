@@ -42,14 +42,8 @@ void loop() {
     float theta = 0; // Angle of the disk rotation
     digitalWrite(dirPin1,LOW); // Enables the motor to move in a particular direction
     // Makes 200 pulses for making one full cycle rotation
-    for(int x = 0; x < 200; x++) {
-      digitalWrite(stepPin1,HIGH); 
-      delayMicroseconds(500); 
-      digitalWrite(stepPin1,LOW); 
-     delayMicroseconds(500);
-     theta += 1.8;
-     Serial.print("angle = ");
-     Serial.print(theta); // output disk rotation angle
+    for(int x = 0; x < 200;) {
+     
 
      if (Serial1.available()) { //check if serial port has data input
         if(Serial1.read() == HEADER) { //assess data package frame header 0x59 
@@ -64,18 +58,29 @@ void loop() {
                 dist = uart[2] + uart[3] * 256; //calculate distance value 
                 strength = uart[4] + uart[5] * 256; //calculate signal strength value 
           
-                Serial.print("dist = ");
+                Serial.print(" dist = ");
                 Serial.print(dist); //output measure distance value of LiDAR 
                 Serial.print('\t');
                 Serial.print("strength = ");
-                Serial.println(strength); //output signal strength value
-        
+                Serial.print(strength); //output signal strength value
+                Serial.print('\t');
+                
+                digitalWrite(stepPin1,HIGH); 
+                delayMicroseconds(500); 
+                digitalWrite(stepPin1,LOW); 
+                delayMicroseconds(500);
+                theta += 1.8;
+                Serial.print("  angle = ");
+                Serial.print(theta); // output disk rotation angle
+                Serial.print('\t');
+                Serial.print(" height = ");
+                Serial.println(heightData);
+                x++;
           } 
          }
        }
     }
-    Serial.print("height = ");
-    Serial.println(heightData);
+    
       
   }
   
