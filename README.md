@@ -1,3 +1,4 @@
+
 # 3DModeling
 This is the working space for EE300 design project collaboration
 
@@ -16,5 +17,15 @@ This is the working space for EE300 design project collaboration
 | Component | Quantity | Purpose | Link | Cost($) |
 | --- | --- | --- | --- | --- |
 | `Nema17 Stepper Motor` | 1 | Drive Rotation Plate | https://www.amazon.com/dp/B07THK76QQ?psc=1&ref=ppx_yo2_dt_b_product_details | 10.99 |
-| `git diff` | Show file differences that **haven't been** staged |
-
+| `Nema17 Stepper Motor 400mm thread` | 1 | Vertical Motion | https://www.amazon.com/dp/B07YQQGQ4C?psc=1&ref=ppx_yo2_dt_b_product_details | 35.99 |
+| `450mm Linear Motion Rails` | 4 | Vertical Motion Support | https://www.amazon.com/dp/B08HWJVX63?psc=1&ref=ppx_yo2_dt_b_product_details | 35.98 |
+| `12mm Linear Ball Bearing` | 4 | Vertical Motion | https://www.amazon.com/dp/B07H95FFP1?ref=ppx_yo2_dt_b_product_details&th=1 | 11.99 |
+| `TF-Luna Lidar` | 1 | LIDAR | https://www.amazon.com/dp/B08F55QTWP?psc=1&ref=ppx_yo2_dt_b_product_details |25.98 |
+| `A4988 Stepper Driver` | 5 | Stepper Driver | https://www.amazon.com/dp/B07BND65C8?psc=1&ref=ppx_yo2_dt_b_product_details | 9.69 |
+| `Arduino Uno R3` | 1 | Micro-Controller | https://www.amazon.com/dp/B008GRTSV6?psc=1&ref=ppx_yo2_dt_b_product_details | 22.88 |
+| `Nylon Spacer` | 320 | PCB Stand-off | https://www.amazon.com/dp/B008GRTSV6?psc=1&ref=ppx_yo2_dt_b_product_details | 11.88 |
+| `M3 Threaded Inserts` | 120 | PCB Mounting | https://www.amazon.com/dp/B09KZSJS88?psc=1&ref=ppx_yo2_dt_b_product_details | 12.99 |
+| `100uF Cap` | 20 | PCB | https://www.digikey.com/en/products/detail/kemet/ESK107M016AE3AA/13176338 | 3.42 | 
+| `0.1uF Cap` | 20 | PCB | https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/885012207045/5453900 | 1.12 |
+| `TE 1x4 Connector`| 4 | PCB | https://www.digikey.com/en/products/detail/te-connectivity-amp-connectors/796949-4/2223910 | 8.12 |
+| `PWR Jack` | 4 | PCB | https://www.digikey.com/en/products/detail/te-connectivity-amp-connectors/796949-4/2223910 | 2.76 |
