@@ -12,15 +12,20 @@ pi = np.pi
 # porportional to the height and the column index is porportional
 # to the angle
 
-def create_cylinder(m,n,radius=1,rot_ax=[0,0]):
-	cylndr = np.zeros([n,m])
+def create_cylinder(m,n,r=2,rot_ax=[1,1]):
+	cylinder = np.zeros([m,n])
+
 	for i in range(n):
 		theta = 2*pi/n*i
-		x = radius*np.cos(theta)
-		y = radius*np.sin(theta)
 
-		cylndr[:,i] = ((x-rot_ax[0])**2+(y-rot_ax[1])**2)**(1/2)
-	return cylndr
+		x = r*np.cos(theta)+rot_ax[0]
+		y = r*np.sin(theta)+rot_ax[1]
+
+		dist = (x**2+y**2)**(1/2)
+
+		cylinder[:,i] = dist
+
+	return cylinder
 
 
 
@@ -28,9 +33,9 @@ def create_cylinder(m,n,radius=1,rot_ax=[0,0]):
 # within ranges of angles
 def create_cube(m,n,length = 1, rot_ax = [0,0]):
 
-	cube = np.zeros([n,m])
+	cube = np.zeros([m,n])
 
-	for i in range(m):
+	for i in range(n):
 		theta = 2*pi/n*i
 
 		if(theta<pi/4 or theta>pi*7/4):
@@ -57,14 +62,14 @@ def create_cube(m,n,length = 1, rot_ax = [0,0]):
 # to the dot nets in 3D space
 
 def polar_to_cart(M,h=1):
-	n,m = M.shape
-	cart = np.zeros([n,m,3])
+	m,n = M.shape
+	cart = np.zeros([m,n,3])
 
-	for i in range(n):
-		for j in range(m):
-			x = M[i,j]*np.cos(2*pi/m*j)
-			y = M[i,j]*np.sin(2*pi/m*j)
-			z = i/(n-1)*h
+	for i in range(m):
+		for j in range(n):
+			x = M[i,j]*np.cos(2*pi/n*j)
+			y = M[i,j]*np.sin(2*pi/n*j)
+			z = i/(m-1)*h
 			
 			cart[i,j] = [x,y,z]
 
@@ -73,6 +78,9 @@ def polar_to_cart(M,h=1):
 
 
 def mat2mesh(vertices,name= None):
+	if len(vertices.shape)==2:
+		vertices = polar_to_cart(vertices)
+
 	save = (name!=None)
 	column_count = vertices.shape[0]
 	row_count = vertices.shape[1]
