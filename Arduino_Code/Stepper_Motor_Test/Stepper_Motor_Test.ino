@@ -23,7 +23,7 @@ void loop() {
   
   digitalWrite(dirPin,LOW); //Changes the rotations direction
   // Makes 400 pulses for making two full cycle rotation
-  for(int x = 0; x < 400; x++) {
+  for(int x = 0; x < 200; x++) {
     digitalWrite(stepPin,HIGH);
     delayMicroseconds(500);
     digitalWrite(stepPin,LOW);
