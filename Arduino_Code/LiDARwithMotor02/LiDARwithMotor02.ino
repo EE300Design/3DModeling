@@ -32,6 +32,7 @@ void setup() {
 
 float heightData = 0;
 int h = 0;
+float L = 40.0; //sensor to the center of disk distance
 
 
 void start_scan()//
