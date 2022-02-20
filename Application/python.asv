@@ -1,0 +1,5 @@
+function  python(script)
+    commandStr = 'python3 .\sqrd.py 2';
+    [status, commandOut] = system(commandStr);
+    fprintf('squared result is %d\n',str2num(commandOut));
+end 
