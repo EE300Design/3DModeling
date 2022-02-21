@@ -32,24 +32,49 @@ def scan_ctl():
 	
 	return scan_status
 
+scanCount = 0
+
 time.sleep(2)
 f = open("LiDAR.txt",'w')
 
-if scan_status == 0:
+while scan_status == 0:
 	scan_status = scan_ctl()
+
 	if scan_status == 1:
-		with open("LiDAR.txt", 'w', encoding = 'utf-8') as f:
-			f.write("LiDAR scanning data\n")
-			for i in range(0,10):
-				data = ser.readline()
-				data = data.decode('utf-8')
-				print(data)
-			
-				f.write(data + "\n")
-			#f.close()
+		dataSize = input("\n Type in number of data points (int): ")
+		dataSize = int(dataSize)
+		if scanCount == 0:
+			with open("LiDAR.txt", 'w', encoding = 'utf-8') as f:
+				f.write("LiDAR scanning data\n")
+				for i in range(0,dataSize):
+					data = ser.readline()
+					data = data.decode('utf-8')
+					#print(data)
+				
+					f.write(data + "\n")
+				#f.close()
+				scanCount += 1
+		
+		# append new scanned data if not first round of scanning
+		else:
+			with open("LiDAR.txt", 'a', encoding = 'utf-8') as f:
+				
+				for i in range(0,dataSize):
+					data = ser.readline()
+					data = data.decode('utf-8')
+					#print(data)
+				
+					f.write(data + "\n")
+				#f.close()
+				scanCount += 1
+					
 		print ("File closed")
+		print ("{} time(s) scanned so far".format(scanCount))
+		scan_status = 0
+	
 	elif scan_status == 2:
 		print("Not scanning")
+
 
 
 
