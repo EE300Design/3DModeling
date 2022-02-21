@@ -4,8 +4,8 @@ SoftwareSerial Serial1(7,8); //define software serial port name as Serial1 and d
 /* For Arduinoboards with multiple serial ports like DUEboard, interpret above two pieces of code and directly use Serial1 serial port*/
 int dist; //actual distance measurements of LiDAR 
 int strength; //signal strength of LiDAR
-float x;
-float y;
+float x_cor;
+float y_cor;
 
 int check; //save check value
 int i;
@@ -39,6 +39,7 @@ const int Length = 40; //sensor to the center of disk distance
 
 void start_scan()//
 {
+  delay(1000);
     //Set scanning max height limit 360 is found by 7200steps/20
   for(int n = 0; n < 360; n++) {
 
@@ -47,7 +48,7 @@ void start_scan()//
     // Makes 200 pulses for making one full cycle rotation
     for(int x = 0; x < 200;) {
      
-
+     
      if (Serial1.available()) { //check if serial port has data input
         if(Serial1.read() == HEADER) { //assess data package frame header 0x59 
           uart[0]=HEADER;
@@ -61,31 +62,40 @@ void start_scan()//
                 dist = uart[2] + uart[3] * 256; //calculate distance value 
                 strength = uart[4] + uart[5] * 256; //calculate signal strength value 
           
-                //Serial.print(" dist = ");
-                dist = Length-dist;
-                //Serial.print(dist); //output measure distance value of LiDAR 
-                //Serial.print(' ');
-                //Serial.print("strength = ");
-                //Serial.print(strength); //output signal strength value
-                //Serial.print('\t');
                 
                 digitalWrite(stepPin1,HIGH); 
                 delayMicroseconds(500); 
                 digitalWrite(stepPin1,LOW); 
                 delayMicroseconds(500);
                 theta += 1.8;
-                //Serial.print("  angle = ");
-                x = dist*cos((theta/180) * 3.14159);
-                y = dist*sin((theta/180) * 3.14159);
-                Serial.print(x); // output disk rotation angle
-                Serial.print(' ');
-                Serial.print(y);
-                Serial.print(' ');
-                //Serial.print(" height = ");
-                Serial.println(heightData);
-                //Serial.print(' ');
-                //Serial.println(strength); //output signal strength value
+
                 x++;
+                // check if one full rotation completed
+                if (x==200){
+                  digitalWrite(dirPin2,LOW); // Enables the motor to move in clockwise direction
+                                             // Makes 200 pulses for making one full cycle rotation
+ 
+                  for(int x = 0; x < heightIncrement; x++) {
+                      digitalWrite(stepPin2,HIGH); 
+                      delayMicroseconds(500); 
+                      digitalWrite(stepPin2,LOW); 
+                      delayMicroseconds(500); 
+                    }
+    
+                  h += heightIncrement; // counting height rotation steps
+                  heightData = heightData + h/24.0; // calculate the hieght
+                  }
+
+                // Perform coordinate conversion  
+                x_cor = (Length-dist)*cos((theta/180) * 3.14159);
+                y_cor = (Length-dist)*sin((theta/180) * 3.14159);
+                Serial.print(x_cor); // output disk rotation angle
+                Serial.print(' ');
+                Serial.print(y_cor);
+                Serial.print(' ');
+                Serial.println(heightData);
+               
+                
           } 
          }
        }
@@ -97,22 +107,7 @@ void start_scan()//
     delay(100); // One second delay
   
 
-    digitalWrite(dirPin2,LOW); // Enables the motor to move in clockwise direction
-  // Makes 200 pulses for making one full cycle rotation
- 
-    for(int x = 0; x < heightIncrement; x++) {
-      digitalWrite(stepPin2,HIGH); 
-      delayMicroseconds(500); 
-      digitalWrite(stepPin2,LOW); 
-      delayMicroseconds(500); 
-    }
-    
-    h += heightIncrement; // counting height rotation steps
-    heightData = heightData + h/24.0; // calculate the hieght
-    
-  
-
-}
+ }
 }
 
 void stop_scan(){
