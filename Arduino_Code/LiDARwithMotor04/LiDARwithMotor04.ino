@@ -13,12 +13,13 @@ int uart[9]; //save data measured by LiDAR
 const int HEADER=0x59; //frame header of data package 
 
 // defines pins numbers
-const int stepPin1 = 4; 
-const int dirPin1 = 3; 
-const int stepPin2 = 5; 
+const int stepPin1 = 3; //horizontal rotation 
+const int dirPin1 = 4;  // rotation
+const int stepPin2 = 5; // rotation for up/down
 const int dirPin2 = 6; 
 
 const int heightIncrement = 20; // Height increment amount after one disk rotation
+bool interrupt = false; // interruption flag
 
 
 void setup() {
@@ -44,12 +45,12 @@ void start_scan()//
   for(int n = 0; n < 360; n++) {
 
     float theta = 0; // Angle of the disk rotation
-    digitalWrite(dirPin1,LOW); // Enables the motor to move in a particular direction
+    digitalWrite(dirPin1,LOW); // Enables the motor to move up 
     // Makes 200 pulses for making one full cycle rotation
     for(int x = 0; x < 200;) {
      
      
-     if (Serial1.available()) { //check if serial port has data input
+     if (Serial1.available() && !interrupt) { //check if serial port has data input
         if(Serial1.read() == HEADER) { //assess data package frame header 0x59 
           uart[0]=HEADER;
             if (Serial1.read() == HEADER) { //assess data package frame header 0x59
@@ -62,7 +63,7 @@ void start_scan()//
                 dist = uart[2] + uart[3] * 256; //calculate distance value 
                 strength = uart[4] + uart[5] * 256; //calculate signal strength value 
           
-                
+              
                 digitalWrite(stepPin1,HIGH); 
                 delayMicroseconds(10); 
                 digitalWrite(stepPin1,LOW); 
@@ -75,7 +76,7 @@ void start_scan()//
                   digitalWrite(dirPin2,LOW); // Enables the motor to move in clockwise direction
                                              // Makes 200 pulses for making one full cycle rotation
  
-                  for(int x = 0; x < heightIncrement; x++) {
+                  for(int ht = 0; ht < heightIncrement; ht++) {
                       digitalWrite(stepPin2,HIGH); 
                       delayMicroseconds(500); 
                       digitalWrite(stepPin2,LOW); 
@@ -94,6 +95,7 @@ void start_scan()//
                 Serial.print(y_cor);
                 Serial.print(' ');
                 Serial.println(heightData);
+                //Serial.flush
                
                 
           } 
@@ -110,10 +112,37 @@ void start_scan()//
  }
 }
 
+
+
 void stop_scan(){
 
-  delay(2000);
+  interrupt = true;
   }
+
+void Rotation (dir){
+  if (dir == 1){
+    digitalWrite(dirPin1,LOW);
+    digitalWrite(stepPin1,HIGH); 
+    delayMicroseconds(500); 
+    digitalWrite(stepPin1,LOW); 
+    delayMicroseconds(500);
+  }
+
+  else if (dir == 0){ // Rotate downwards
+    digitalWrite(dirPin2,HIGH); //Changes the rotations direction
+
+    digitalWrite(stepPin,HIGH);
+    delayMicroseconds(500);
+    digitalWrite(stepPin,LOW);
+    delayMicroseconds(500);
+ }
+    
+    }
+    
+  }
+
+  // while (limit switch ...)
+  //{Rotation (0)}
 
 
 void loop() {
