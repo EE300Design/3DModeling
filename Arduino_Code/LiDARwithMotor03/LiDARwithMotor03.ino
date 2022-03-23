@@ -13,9 +13,9 @@ int uart[9]; //save data measured by LiDAR
 const int HEADER=0x59; //frame header of data package 
 
 // defines pins numbers
-const int stepPin1 = 3; 
+const int stepPin1 = 3; //Class 1 pins are the platform
 const int dirPin1 = 4; 
-const int stepPin2 = 5; 
+const int stepPin2 = 5; // Class 2 pins are the screw
 const int dirPin2 = 6; 
 
 const int heightIncrement = 20; // Height increment amount after one disk rotation
@@ -27,7 +27,7 @@ void setup() {
     // For Stepper Motors, sets the four pins as Outputs
   pinMode(stepPin1,OUTPUT); // Disk rotation motor
   pinMode(dirPin1,OUTPUT);
-  pinMode(stepPin2,OUTPUT); // Screw rotation motor
+  pinMode(stepPin2,OUTPUT); // Screw rotation motor dir high= down
   pinMode(dirPin2,OUTPUT);
 }
 
@@ -129,6 +129,17 @@ void loop() {
     if (incomingByte == 'L') {
       stop_scan();
     }
+    /*
+     * when complete
+     * counterclockwise 7200 steps to reset
+     */
+     digitalWrite(dirPin2,HIGH);
+     for(int i=0;i<7200;i++){
+        digitalWrite(stepPin2,HIGH); 
+        delayMicroseconds(500); 
+        digitalWrite(stepPin2,LOW); 
+        delayMicroseconds(500);
+     }
   }
     
  }
