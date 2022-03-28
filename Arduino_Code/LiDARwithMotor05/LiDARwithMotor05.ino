@@ -1,5 +1,6 @@
 #include <SoftwareSerial.h> //header file of software serial port
-SoftwareSerial Serial1(7,8); //define software serial port name as Serial1 and define pin7 as RX and pin8 as TX
+//The next line is commented as we are using mega
+//SoftwareSerial Serial1(7,8); //define software serial port name as Serial1 and define pin7 as RX and pin8 as TX
 
 /* For Arduinoboards with multiple serial ports like DUEboard, interpret above two pieces of code and directly use Serial1 serial port*/
 int dist; //actual distance measurements of LiDAR 
@@ -29,6 +30,8 @@ void setup() {
   pinMode(dirPin1,OUTPUT);
   pinMode(stepPin2,OUTPUT); // Screw rotation motor
   pinMode(dirPin2,OUTPUT);
+  pinMode(7,INPUT);
+  pinMode(8, OUTPUT);
 }
 
 
@@ -40,14 +43,23 @@ const int Length = 40; //sensor to the center of disk distance
 void start_scan()//
 {
   delay(1000);
+  bool exit_scan=false;
     //Set scanning max height limit 360 is found by 7200steps/20
-  for(int n = 0; n < 360; n++) {
-
+  while(!exit_scan) {
+    
     float theta = 0; // Angle of the disk rotation
     digitalWrite(dirPin1,LOW); // Enables the motor to move in a particular direction
     // Makes 200 pulses for making one full cycle rotation
     for(int x = 0; x < 200;) {
-     
+     int interrupt = digitalRead(7);
+     if(interrupt == HIGH){
+      
+       //Serial.print('H');
+       //Serial.write(interrupt);
+       digitalWrite(8,interrupt);
+       exit_scan = true;
+       break;
+      }
      
      if (Serial1.available()) { //check if serial port has data input
         if(Serial1.read() == HEADER) { //assess data package frame header 0x59 
@@ -64,9 +76,9 @@ void start_scan()//
           
                 
                 digitalWrite(stepPin1,HIGH); 
-                delayMicroseconds(10); 
+                delayMicroseconds(100); 
                 digitalWrite(stepPin1,LOW); 
-                delayMicroseconds(10);
+                delayMicroseconds(100);
                 theta += 1.8;
 
                 x++;
@@ -104,10 +116,13 @@ void start_scan()//
       
   }
   
-    delay(100); // One second delay
+    delay(1000); // One second delay
   
 
  }
+ Serial.println("scan exited");
+ digitalWrite(8,LOW);
+ 
 }
 
 void stop_scan(){
@@ -120,6 +135,7 @@ void loop() {
 
     if (Serial.available() > 0) {
     // read the oldest byte in the serial buffer:
+
     int incomingByte = Serial.read();
     // if it's a capital H (ASCII 72), begin scanning
     if (incomingByte == 'H') {
