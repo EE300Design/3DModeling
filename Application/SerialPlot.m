@@ -4,14 +4,15 @@ clear
 clc
 
 %instrfind(); show closed and open ports
-s = serial("/dev/tty.usbmodem141301")
+s = serial("/dev/cu.usbmodem141301")
 
 figure (1)
 clf
 
+a = 1;
 n=1;
 fopen(s);
-while(1)
+while(a)
 
     tline = fscanf(s) % scan one line from the serial 
     C = textscan(tline,'%f'); % extract numeric values 
@@ -25,6 +26,10 @@ while(1)
     plot3(x,y,z,'.')
     pause(0.02)
     n = n+1;
+    if n ==360
+        a =0;
+        fclose(s)
+    end
 end
 
 %fclose(s)
