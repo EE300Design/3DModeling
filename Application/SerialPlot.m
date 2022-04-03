@@ -29,6 +29,7 @@ while(a)
     if n ==360
         a =0;
         fclose(s)
+        clear s
     end
 end
 
