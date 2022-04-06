@@ -99,8 +99,8 @@ void start_scan()//
                   }
 
                 // Perform coordinate conversion  
-//                Serial.print(dist);
-//                Serial.print(' ');
+                Serial.print(dist);
+                Serial.print(' ');
                 x_cor = (Length-dist)*cos((theta/180) * 3.14159);
                 y_cor = (Length-dist)*sin((theta/180) * 3.14159);
                 Serial.print(x_cor); // output disk rotation angle
