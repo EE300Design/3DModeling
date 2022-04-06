@@ -145,6 +145,7 @@ void loop() {
       for(int b; b < 401; b++){
         float condist = 10.0;
         Serial.print(condist);
+        Serial.print(' ')
       }
     }
     // if it's an L (ASCII 76) stops scanning
