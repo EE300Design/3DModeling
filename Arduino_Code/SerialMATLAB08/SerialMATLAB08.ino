@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h> //header file of software serial port
 //The next line is commented as we are using mega
-SoftwareSerial Serial1(7,8); //define software serial port name as Serial1 and define pin7 as RX and pin8 as TX
+//SoftwareSerial Serial1(7,8); //define software serial port name as Serial1 and define pin7 as RX and pin8 as TX
 
 /* For Arduinoboards with multiple serial ports like DUEboard, interpret above two pieces of code and directly use Serial1 serial port*/
 int dist; //actual distance measurements of LiDAR 
@@ -32,6 +32,7 @@ void setup() {
   pinMode(dirPin2,OUTPUT);
   pinMode(7,INPUT);
   pinMode(8, OUTPUT);
+  pinMode(11, OUTPUT);
 }
 
 
@@ -138,10 +139,11 @@ void loop() {
     if (Serial.available() <= 0) {
     // read the oldest byte in the serial buffer:
       //start_scan();
-    int incomingByte = Serial.read();
+    int incomingByte = digitalRead(9);
     // if it's a capital H (ASCII 72), begin scanning
-    if (incomingByte == 'H') {
+    if (incomingByte == HIGH) {
       //start_scan();
+      digitalWrite(11,HIGH);
       for(int b; b < 401; b++){
         float condist = 10.0;
         Serial.println(condist);
