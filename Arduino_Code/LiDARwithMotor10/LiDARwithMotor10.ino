@@ -27,7 +27,7 @@ const int dirPin2 = 6;
 const int LimSwitchUp = 8;
 const int LimSwitchDw = 9;
 
-const int heightIncrement = 20; // Height increment amount after one disk rotation
+const int heightIncrement = 60; // Height increment amount after one disk rotation
 
 
 void setup() {
@@ -120,7 +120,7 @@ void start_scan()//
                 dist = uart[2] + uart[3] * 256; //calculate distance value [cm]
                 strength = uart[4] + uart[5] * 256; //calculate signal strength value 
           
-                Serial1.flush();
+                //Serial1.flush();  // This flush makes serial unstable.
                 delay(100);
                 digitalWrite(stepPin1,HIGH); 
                 delayMicroseconds(100); 
