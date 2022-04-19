@@ -27,7 +27,7 @@ const int dirPin2 = 6;
 const int LimSwitchUp = 8;
 const int LimSwitchDw = 9;
 
-const int heightIncrement = 20; // Height increment amount after one disk rotation
+const int heightIncrement = 80; // Height increment amount after one disk rotation
 
 
 void setup() {
@@ -46,7 +46,7 @@ void setup() {
 
 float heightData = 0;
 int h = 0;
-const int Length = 50; //sensor to the center of disk distance in cm
+const int Length = 47; //sensor to the center of disk distance in cm
 
 
 ///////////////
@@ -117,10 +117,11 @@ void start_scan()//
                 }
               check = uart[0] + uart[1] + uart[2] + uart[3] + uart[4] + uart[5] + uart[6] + uart[7]; 
               if (uart[8] == (check & 0xff)) { //verify the received data as per protocol
-                dist = uart[2] + uart[3] * 256; //calculate distance value [cm]
+                dist = uart[2] + uart[3] * 256; //calculate distance value [mm]
+                float cmdist = dist/10.0;  // convert to cm
                 strength = uart[4] + uart[5] * 256; //calculate signal strength value 
           
-                Serial1.flush();
+                //Serial1.flush();
                 delay(100);
                 digitalWrite(stepPin1,HIGH); 
                 delayMicroseconds(100); 
@@ -142,14 +143,14 @@ void start_scan()//
                     }
     
                   h += heightIncrement; // counting height rotation steps
-                  heightData = heightData + h/24.0; // calculate the hieght
+                  heightData = (heightData + h/26.7)/10; // calculate the hieght in cm
                   }
 
                 // Perform coordinate conversion  
-//                Serial.print(dist);
+//                Serial.print(cmdist);
 //                Serial.print(' ');
-                x_cor = (Length-dist)*cos((theta/180) * 3.14159);
-                y_cor = (Length-dist)*sin((theta/180) * 3.14159);
+                x_cor = (Length-cmdist)*cos((theta/180) * 3.14159);
+                y_cor = (Length-cmdist)*sin((theta/180) * 3.14159);
                 Serial.print(x_cor); // output disk rotation angle
                 Serial.print(' ');
                 Serial.print(y_cor);
