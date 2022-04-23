@@ -38,7 +38,7 @@ void setup() {
   pinMode(dirPin1,OUTPUT);
   pinMode(stepPin2,OUTPUT); // Screw rotation motor
   pinMode(dirPin2,OUTPUT);
-  pinMode(1,INPUT);// interrupt button
+  //pinMode(1,INPUT);// interrupt button
   pinMode(LimSwitchUp, INPUT);
   pinMode(LimSwitchDw, INPUT);
 }
@@ -46,7 +46,7 @@ void setup() {
 
 float heightData = 0;
 int h = 0;
-const int Length = 50; //sensor to the center of disk distance in cm
+const int Length = 47; //sensor to the center of disk distance in cm
 
 
 ///////////////
@@ -79,16 +79,17 @@ void start_scan()//
     for(int x = 0; x < 200;) {
      int UpLim = digitalRead(LimSwitchUp);
      int DwLim = digitalRead(LimSwitchDw);
-     int interrupt = digitalRead(1); // need to fix this
+     //int interrupt = LOW; // need to fix this, changing to protenta interrupt
+     //interrupt = digitalRead(1); // need to fix this
      
-     if(interrupt == LOW){
-      
-       stop_scan();
-       digitalWrite(11,interrupt);
-       Serial.println("Interrupted");
-       exit_scan = true;
-       break;
-      }
+//     if(interrupt == HIGH){ // protenta is HIGH when open
+//      
+//       stop_scan();
+//       digitalWrite(11,interrupt);
+//       Serial.println("Interrupted");
+//       exit_scan = true;
+//       break;
+//      }
 
       //Check if the upper limiting switch is pressed
       
@@ -107,6 +108,17 @@ void start_scan()//
         exit_scan = true;
         break;
         }
+
+     if (Serial.available() > 0) {
+       int incomingByte = Serial.read();
+    // if it's a capital P (ASCII 80 ), stop scanning
+    if (incomingByte == 'P') {
+      Serial.println("paused");
+      stop_scan();
+      exit_scan = true;
+      break;
+    }
+      }
      
      if (Serial1.available()) { //check if serial port has data input
         if(Serial1.read() == HEADER) { //assess data package frame header 0x59 
@@ -120,14 +132,34 @@ void start_scan()//
               if (uart[8] == (check & 0xff)) { //verify the received data as per protocol
                 dist = uart[2] + uart[3] * 256; //calculate distance value [mm]
                 float cmdist = dist/10.0;  // convert to cm
-                strength = uart[4] + uart[5] * 256; //calculate signal strength value 
+                //strength = uart[4] + uart[5] * 256; //calculate signal strength value 
+
+                Serial1.flush();  // This flush makes serial unstable.
+                if (cmdist > 47.0){ // check if the scanning is finished
+                  Serial.println("done");
+                  Serial1.flush();
+                  stop_scan();
+
+                  digitalWrite(dirPin2,HIGH);
+                  
+                  //If scan done, rotates the carriage downward till initial position
+                  while(DwLim == LOW){
+                  DwLim = digitalRead(LimSwitchDw);
+                  digitalWrite(stepPin2,HIGH); 
+                  delayMicroseconds(400); 
+                  digitalWrite(stepPin2,LOW); 
+                  delayMicroseconds(400);
+                  }
+                  exit_scan = true;
+                  break;
+                  }
           
-                //Serial1.flush();  // This flush makes serial unstable.
-                delay(100);
-                digitalWrite(stepPin1,HIGH); 
-                delayMicroseconds(100); 
-                digitalWrite(stepPin1,LOW); 
-                delayMicroseconds(100);
+                
+//                delay(100);
+//                digitalWrite(stepPin1,HIGH); 
+//                delayMicroseconds(100); 
+//                digitalWrite(stepPin1,LOW); 
+//                delayMicroseconds(100);
                 
                 Serial.println(cmdist);
                 theta += 1.8;
@@ -152,8 +184,8 @@ void start_scan()//
                 // Perform coordinate conversion  
                 //Serial.println(dist);
 //                Serial.print(' ');
-//                x_cor = (Length-dist)*cos((theta/180) * 3.14159);
-//                y_cor = (Length-dist)*sin((theta/180) * 3.14159);
+//                x_cor = (Length-cmdist)*cos((theta/180) * 3.14159);
+//                y_cor = (Length-cmdist)*sin((theta/180) * 3.14159);
 //                Serial.print(x_cor); // output disk rotation angle
 //                Serial.print(' ');
 //                Serial.print(y_cor);
@@ -192,7 +224,7 @@ void loop() {
     int incomingByte = Serial.read();
     // if it's a capital H (ASCII 72), begin scanning
     if (incomingByte == 'H') {
-      Serial.print('123');
+      Serial.println("start");
       start_scan();
     }
     // if it's an L (ASCII 76) stops scanning
