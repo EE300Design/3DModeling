@@ -134,7 +134,7 @@ void start_scan()//
                 float cmdist = dist/10.0;  // convert to cm
                 //strength = uart[4] + uart[5] * 256; //calculate signal strength value 
 
-                Serial1.flush();  // This flush makes serial unstable.
+                //Serial1.flush();  // This flush makes serial unstable.
                 if (cmdist > 47.0){ // check if the scanning is finished
                   Serial.println("done");
                   Serial1.flush();
@@ -155,11 +155,11 @@ void start_scan()//
                   }
           
                 
-//                delay(100);
-//                digitalWrite(stepPin1,HIGH); 
-//                delayMicroseconds(100); 
-//                digitalWrite(stepPin1,LOW); 
-//                delayMicroseconds(100);
+                delay(100);
+                digitalWrite(stepPin1,HIGH); 
+                delayMicroseconds(100); 
+                digitalWrite(stepPin1,LOW); 
+                delayMicroseconds(100);
                 
                 Serial.println(cmdist);
                 theta += 1.8;
