@@ -1,0 +1,12 @@
+{
+  "base_url": "/",
+  "hostname": "localhost",
+  "password": false,
+  "pid": 29272,
+  "port": 8890,
+  "root_dir": "C:\\Users\\Erik Huuki",
+  "secure": false,
+  "token": "020d93650f323480d9637b1ba9b7b9381e0273aa89d143eb",
+  "url": "http://localhost:8890/",
+  "version": "1.8.0"
+}
